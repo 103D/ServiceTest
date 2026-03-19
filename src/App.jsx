@@ -106,7 +106,7 @@ function inferApiBaseUrl() {
 
   const host = window.location.hostname;
   const isLocal = host === "localhost" || host === "127.0.0.1";
-  return isLocal ? "http://127.0.0.1:8000" : "/api";
+  return isLocal ? "http://127.0.0.1:8000/api" : "/api";
 }
 
 function isLocalBrowserHost() {

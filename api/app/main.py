@@ -10,8 +10,12 @@ from app.database import engine
 from app.routers import auth, branches, employees, grades, ratings
 from app.utils.employee_ids import next_employee_id_for_branch
 
-app = FastAPI()
-
+app = FastAPI(
+    title="CheckList Service APIs",
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json",
+    redoc_url="/api/redoc"
+)
 # CORS origins are configured from env for production safety.
 # Example: CORS_ORIGINS=https://your-domain.com,https://www.your-domain.com
 origins_env = os.getenv("CORS_ORIGINS", "")
@@ -319,13 +323,13 @@ def seed_demo_employees_and_grades() -> None:
         db.commit()
 
 
-@app.get("/")
+@app.get("/api")
 def root():
     return {"message": "API running"}
 
 
-app.include_router(branches.router)
-app.include_router(auth.router)
-app.include_router(employees.router)
-app.include_router(grades.router)
-app.include_router(ratings.router)
+app.include_router(branches.router, prefix="/api")
+app.include_router(auth.router, prefix="/api")
+app.include_router(employees.router, prefix="/api")
+app.include_router(grades.router, prefix="/api")
+app.include_router(ratings.router, prefix="/api")

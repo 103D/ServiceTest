@@ -1,36 +1,15 @@
 {
-    "rewrites": [
-        {
-            "source": "/api",
-            "destination": "https://checklistservice-production.up.railway.app/"
-        },
-        {
-            "source": "/api/:path*/",
-            "destination": "https://checklistservice-production.up.railway.app/:path*/"
-        },
-        {
-            "source": "/api/:path*",
-            "destination": "https://checklistservice-production.up.railway.app/:path*"
-        },
-        {
-            "source": "/docs",
-            "destination": "https://checklistservice-production.up.railway.app/docs"
-        },
-        {
-            "source": "/redoc",
-            "destination": "https://checklistservice-production.up.railway.app/redoc"
-        },
-        {
-            "source": "/openapi.json",
-            "destination": "https://checklistservice-production.up.railway.app/openapi.json"
-        },
-        {
-            "source": "/docs/oauth2-redirect",
-            "destination": "https://checklistservice-production.up.railway.app/docs/oauth2-redirect"
-        },
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
-        }
-    ]
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
