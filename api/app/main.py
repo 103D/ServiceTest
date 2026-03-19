@@ -2,13 +2,13 @@ import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import inspect, text
-from sqlalchemy.orm import Session
 
-from app import models
-from app.database import engine
+# from sqlalchemy import inspect, text
+# from sqlalchemy.orm import Session
+# from app import models
+# from app.database import engine
 from app.routers import auth, branches, employees, grades, ratings
-from app.utils.employee_ids import next_employee_id_for_branch
+# from app.utils.employee_ids import next_employee_id_for_branch
 
 app = FastAPI(
     title="CheckList Service APIs",
@@ -36,12 +36,12 @@ app.add_middleware(
 )
 
 
-@app.on_event("startup")
-def on_startup():
-    print("CREATING TABLES...")
-    models.Base.metadata.create_all(bind=engine)
-    ensure_grade_created_at_column()
-    ensure_grade_role_in_shift_column()
+# @app.on_event("startup")
+# def on_startup():
+#     print("CREATING TABLES...")
+#     models.Base.metadata.create_all(bind=engine)
+#     ensure_grade_created_at_column()
+#     ensure_grade_role_in_shift_column()
     ensure_grade_status_column()
     ensure_employee_hired_at_column()
     ensure_branch_city_column()
@@ -332,4 +332,4 @@ app.include_router(branches.router, prefix="/api")
 app.include_router(auth.router, prefix="/api")
 app.include_router(employees.router, prefix="/api")
 app.include_router(grades.router, prefix="/api")
-app.include_router(ratings.router, prefix="/api")
+app.include_router(ratings.router, prefix="/api")
