@@ -42,12 +42,12 @@ app.add_middleware(
 #     models.Base.metadata.create_all(bind=engine)
 #     ensure_grade_created_at_column()
 #     ensure_grade_role_in_shift_column()
-    ensure_grade_status_column()
-    ensure_employee_hired_at_column()
-    ensure_branch_city_column()
-    migrate_employee_ids_to_xxyy()
-    reset_sequences()
-    print("DONE")
+    # ensure_grade_status_column()
+    # ensure_employee_hired_at_column()
+    # ensure_branch_city_column()
+    # migrate_employee_ids_to_xxyy()
+    # reset_sequences()
+    # print("DONE")
 
 
 def ensure_grade_created_at_column() -> None:
